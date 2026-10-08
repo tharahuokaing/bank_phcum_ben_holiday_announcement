@@ -1,52 +1,299 @@
-/* ការកំណត់ទូទៅ */
+/* =========================================
+   GOOGLE FONT FALLBACK
+========================================= */
+
+:root {
+    --gold: #d8ad52;
+    --gold-light: #f4d98b;
+    --gold-dark: #9c7023;
+
+    --red: #8f1520;
+    --red-dark: #4d0710;
+
+    --cream: #fff8e8;
+    --white: #ffffff;
+
+    --text-dark: #321416;
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Poppins', 'Kantumruy Pro', sans-serif;
-    background: linear-gradient(135deg, #0b1c3d 0%, #1a365d 100%);
-    color: #fff;
     min-height: 100vh;
+    font-family: "Kantumruy Pro", "Poppins", sans-serif;
+    color: var(--text-dark);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255, 215, 120, 0.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #32070d 0%,
+            #71121c 45%,
+            #3c080e 100%
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   DECORATIVE BACKGROUND
+========================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 215, 120, 0.08),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 215, 120, 0.08),
+            transparent 20%
+        );
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* =========================================
+   TOP ANNOUNCEMENT IMAGE
+========================================= */
+
+.top-image {
+    width: min(1100px, 94%);
+    margin: 25px auto 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="%23ffffff"/></svg>');
+
+    animation: fadeDown 1s ease both;
 }
 
-/* ប្រអប់ផ្ទុកសេចក្តីជូនដំណឹង */
-.announcement-container {
+.top-image img {
+    display: block;
+
     width: 100%;
-    max-width: 600px;
+    max-height: 430px;
+
+    object-fit: contain;
+
+    border-radius: 18px;
+
+    border: 2px solid rgba(244, 217, 139, 0.75);
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(216, 173, 82, 0.15);
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    width: 100%;
+    margin-top: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #420810,
+            #74151f,
+            #420810
+        );
+
+    border-top: 1px solid rgba(244, 217, 139, 0.45);
+    border-bottom: 1px solid rgba(244, 217, 139, 0.45);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-inner {
+    width: min(1150px, 94%);
+    min-height: 90px;
+
+    margin: auto;
+
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-/* រចនាប័ទ្មកាតទម្រង់ឈើបុរាណលាយទំនើប */
-.notice-card {
-    background: linear-gradient(145deg, #3d2314, #28160c);
-    border: 4px solid #d4af37;
-    border-radius: 16px;
-    width: 100%;
-    padding: 30px 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.3);
-    text-align: center;
-    position: relative;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    text-align: left;
 }
 
-/* ផ្នែកឡូហ្គោ */
-.logo-circle {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 15px auto;
+.logo-icon {
+    width: 68px;
+    height: 68px;
+
     border-radius: 50%;
-    border: 3px solid #d4af37;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    background: #0b1c3d;
+
+    border: 3px solid var(--gold-light);
+
+    background: #fff;
+
+    box-shadow:
+        0 0 0 4px rgba(216, 173, 82, 0.12),
+        0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-text h1 {
+    color: var(--gold-light);
+
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+.logo-text span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #fff;
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(11px, 1.5vw, 15px);
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main {
+    width: 100%;
+    padding: 55px 20px 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================================
+   NOTICE CARD
+========================================= */
+
+.notice-card {
+    position: relative;
+
+    width: min(850px, 100%);
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf5,
+            #fff6dc
+        );
+
+    border: 3px solid var(--gold);
+
+    box-shadow:
+        var(--shadow),
+        0 0 0 8px rgba(216, 173, 82, 0.08);
+
+    animation: cardAppear 1s cubic-bezier(.2,.8,.2,1) both;
+}
+
+
+/* =========================================
+   CARD TOP DECORATION
+========================================= */
+
+.notice-card::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-dark),
+            var(--gold-light),
+            var(--gold-dark)
+        );
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.card-header {
+    padding: 48px 30px 32px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center top,
+            rgba(216, 173, 82, 0.20),
+            transparent 60%
+        );
+}
+
+.logo-circle {
+    width: 105px;
+    height: 105px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    background: white;
+
+    border: 4px solid var(--gold);
+
+    box-shadow:
+        0 0 0 7px rgba(216, 173, 82, 0.12),
+        0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .logo-circle img {
@@ -55,84 +302,373 @@ body {
     object-fit: cover;
 }
 
-/* ຫົວຂໍ້ */
 .card-header h2 {
-    font-family: 'Kantumruy Pro', sans-serif;
-    font-size: 22px;
-    color: #f3e5ab;
-    margin-bottom: 5px;
+    color: var(--red);
+
+    font-size: clamp(25px, 5vw, 42px);
+    line-height: 1.45;
+
     font-weight: 700;
 }
 
 .card-header h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 16px;
-    color: #d4af37;
+    margin-top: 8px;
+
+    color: var(--gold-dark);
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(14px, 2vw, 20px);
     letter-spacing: 1px;
-    margin-bottom: 20px;
 }
 
-/* ផ្នែកខ្លឹមសារខាងក្នុង */
+
+/* =========================================
+   CARD BODY
+========================================= */
+
 .card-body {
-    border-top: 1px solid rgba(212, 175, 55, 0.3);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-    padding: 20px 0;
-    margin: 15px 0;
+    padding: 0 40px 40px;
 }
 
-.target-audience .kh-text {
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
+
+/* =========================================
+   TARGET AUDIENCE
+========================================= */
+
+.target-audience {
+    text-align: center;
+
+    padding: 20px;
+
+    margin-bottom: 28px;
+
+    border-top: 1px solid rgba(156, 112, 35, 0.3);
+    border-bottom: 1px solid rgba(156, 112, 35, 0.3);
 }
 
-.target-audience .en-text {
-    font-size: 15px;
-    color: #d4af37;
-    margin-bottom: 15px;
+.kh-text {
+    color: var(--red);
+
+    font-size: clamp(17px, 3vw, 23px);
+    font-weight: 700;
 }
 
-/* រយៈពេលឈប់សម្រាក */
+.en-text {
+    margin-top: 5px;
+
+    color: #795d3d;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   HOLIDAY PERIOD
+========================================= */
+
 .holiday-period {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 10px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 35px 20px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff5d8,
+            #fffdf4
+        );
+
+    border: 1px solid rgba(216, 173, 82, 0.5);
+
+    text-align: center;
+
+    box-shadow:
+        inset 0 0 30px rgba(216, 173, 82, 0.08);
 }
+
+
+/* =========================================
+   STATUS BADGE
+========================================= */
 
 .status-badge {
-    font-size: 15px;
-    font-weight: 600;
-    color: #ff6b6b;
-    margin-bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 10px 22px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--red),
+            var(--red-dark)
+        );
+
+    color: white;
+
+    box-shadow: 0 8px 20px rgba(92, 8, 17, 0.22);
 }
 
-.date-display .kh-date {
-    font-size: 16px;
+.status-badge .kh {
     font-weight: 700;
-    color: #ffd700;
 }
 
-.date-display .en-date {
-    font-size: 14px;
-    color: #e2e8f0;
-    margin-top: 2px;
+.status-badge .en {
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
 }
 
-/* ផ្នែកបាតកាត (ជូនពរ) */
+.status-badge .divider {
+    color: var(--gold-light);
+}
+
+
+/* =========================================
+   DATE DISPLAY
+========================================= */
+
+.date-display {
+    margin-top: 28px;
+}
+
+.kh-date {
+    color: var(--red);
+
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 700;
+
+    line-height: 1.6;
+}
+
+.en-date {
+    margin-top: 8px;
+
+    color: #6e5438;
+
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 500;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   CARD FOOTER
+========================================= */
+
 .card-footer {
-    margin-top: 15px;
+    padding: 28px 20px 35px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4b0911,
+            #79151f,
+            #4b0911
+        );
+
+    color: white;
 }
 
 .wish-kh {
-    font-size: 16px;
-    font-weight: 600;
-    color: #4ade80;
+    color: var(--gold-light);
+
+    font-size: clamp(18px, 3vw, 25px);
+    font-weight: 700;
 }
 
 .wish-en {
+    margin-top: 5px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
-    color: #86efac;
-    font-style: italic;
+}
+
+
+/* =========================================
+   GOLD DECORATIVE CORNERS
+========================================= */
+
+.notice-card::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 22px;
+    top: 20px;
+
+    color: var(--gold);
+
+    font-size: 25px;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================
+   HOVER EFFECT
+========================================= */
+
+.notice-card {
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.notice-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.42),
+        0 0 35px rgba(216, 173, 82, 0.15);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .top-image {
+        margin-top: 12px;
+        width: 96%;
+    }
+
+    .top-image img {
+        border-radius: 12px;
+    }
+
+    .navbar-inner {
+        min-height: 78px;
+    }
+
+    .logo-icon {
+        width: 54px;
+        height: 54px;
+    }
+
+    .logo-container {
+        gap: 12px;
+    }
+
+    .logo-text span {
+        letter-spacing: 1px;
+    }
+
+    main {
+        padding: 30px 12px 50px;
+    }
+
+    .notice-card {
+        border-radius: 20px;
+    }
+
+    .card-header {
+        padding: 38px 18px 25px;
+    }
+
+    .logo-circle {
+        width: 85px;
+        height: 85px;
+    }
+
+    .card-body {
+        padding: 0 15px 25px;
+    }
+
+    .holiday-period {
+        padding: 25px 12px;
+    }
+
+    .status-badge {
+        flex-wrap: wrap;
+        gap: 7px;
+        padding: 9px 15px;
+    }
+
+    .kh-date {
+        font-size: 21px;
+    }
+
+    .en-date {
+        font-size: 13px;
+    }
+
+    .card-footer {
+        padding: 24px 12px 28px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL SCREENS
+========================================= */
+
+@media (max-width: 400px) {
+
+    .logo-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo-text h1 {
+        font-size: 17px;
+    }
+
+    .logo-text span {
+        font-size: 9px;
+    }
+
+    .card-header h2 {
+        font-size: 23px;
+    }
+
+    .kh-date {
+        font-size: 18px;
+    }
+
+    .status-badge .en {
+        font-size: 11px;
+    }
 }
